@@ -11,7 +11,32 @@ Master the core concepts of Generative AI on Azure, including model deployment, 
 Build your first AI agent using Microsoft's Semantic Kernel. Learn about plugins, planners, and native function integration.
 
 ### [03 - Enterprise RAG Assistant](./03-enterprise-rag-assistant)
+Design and implement production-ready Retrieval-Augmented Generation (RAG) platforms using Azure AI Search and vector embeddings.ctrl+# Azure Agentic AI Architect Labs
+
+Hands-on labs and architecture patterns for building enterprise Agentic AI solutions on Azure using Azure AI Foundry, Azure OpenAI, Semantic Kernel, RAG, and multi-agent orchestration.
+
+## Learning Path
+
+### [01 - Azure OpenAI Foundations](./01-openai-foundations)
+Master the core concepts of Generative AI on Azure, including model deployment, prompt engineering, and security baselines.
+
+### [02 - Semantic Kernel Agent](./02-semantic-kernel-agent)
+Build your first AI agent using Microsoft's Semantic Kernel. Learn about plugins, planners, and native function integration.
+
+### [03 - Enterprise RAG](./03-enterprise-rag)
 Design and implement production-ready Retrieval-Augmented Generation (RAG) platforms using Azure AI Search and vector embeddings.
+
+### [04 - Multi-Agent Orchestration](./04-multi-agent-orchestration)
+Explore advanced multi-agent patterns including hierarchical supervisors, task-specific worker agents, and persistent state management.
+
+### [05 - Secure AI Gateway](./05-secure-ai-gateway)
+Integrate AI agents with enterprise systems using secure tool authentication and API Management (APIM) as a gateway.
+
+### [06 - Agentic AI Ops](./06-agentic-ai-ops)
+Implement production-grade lifecycle management and monitoring for Agentic AI solutions.
+
+---
+*Created by [Applied AI Learner](https://github.com/appliedailearner)*
 
 ### [04 - Multi-Agent Orchestration](./04-multi-agent)
 Explore advanced multi-agent patterns including hierarchical supervisors, task-specific worker agents, and persistent state management.
