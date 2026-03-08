@@ -15,7 +15,7 @@ Status definitions:
 | `02-foundry-agent-service` | Foundry agent service exploration | Draft | Read-only until standardized | Repo maintainer | 2026-03-08 |
 | `03-semantic-kernel-track` | Semantic Kernel-oriented patterns | Draft | Read-only until standardized | Repo maintainer | 2026-03-08 |
 | `04-agent-framework-and-multi-agent` | Multi-agent and orchestration experiments | Draft | Read-only until standardized | Repo maintainer | 2026-03-08 |
-| `05-rag-with-azure-ai-search` | Retrieval and knowledge grounding patterns | Draft | Read-only until standardized | Repo maintainer | 2026-03-08 |
+| `05-rag-with-azure-ai-search` | Retrieval and knowledge grounding patterns | Runnable Baseline | Secondary execution path after module 09 | Repo maintainer | 2026-03-08 |
 | `06-mcp-and-enterprise-tooling` | MCP and enterprise tool integration patterns | Draft | Read-only until standardized | Repo maintainer | 2026-03-08 |
 | `07-secure-reference-architecture` | Security-focused reference assets | Draft | Read-only until standardized | Repo maintainer | 2026-03-08 |
 | `08-observability-and-evaluation` | Evaluation and observability assets | Draft | Read-only until standardized | Repo maintainer | 2026-03-08 |

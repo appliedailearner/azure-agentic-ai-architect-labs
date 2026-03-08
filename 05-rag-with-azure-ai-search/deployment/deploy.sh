@@ -1,9 +1,21 @@
-﻿#!/bin/bash
+#!/bin/bash
 set -e
-LOCATION="eastus"
-RESOURCE_GROUP="rg-05-rag-with-azure-ai-search-dev"
 
-az group create --name \ --location \ --output none
-echo "Deploying Infrastructure for 05-rag-with-azure-ai-search..."
-az deployment group create --resource-group \ --template-file ../infra/main.bicep --parameters environment=dev
-echo "Deployment Complete."
+ENVIRONMENT=${1:-dev}
+LOCATION=${2:-eastus}
+RESOURCE_GROUP="rg-rag-search-${ENVIRONMENT}"
+WORKDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+echo "Deploying module 05 runnable baseline"
+echo "Environment: ${ENVIRONMENT}"
+echo "Location: ${LOCATION}"
+echo "Resource group: ${RESOURCE_GROUP}"
+
+az group create --name "${RESOURCE_GROUP}" --location "${LOCATION}" --output none
+
+az deployment group create \
+  --resource-group "${RESOURCE_GROUP}" \
+  --template-file "${WORKDIR}/../infra/main.bicep" \
+  --parameters environment="${ENVIRONMENT}" location="${LOCATION}"
+
+echo "Module 05 draft Azure deployment complete."
