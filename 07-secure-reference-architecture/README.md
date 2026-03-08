@@ -9,20 +9,20 @@ This module should eventually hold the repo’s deeper security implementation p
 ## Current Contents
 
 - sample application code
-- a Bicep file
-- a deployment script
+- a corrected draft Bicep baseline
+- a corrected draft deployment script
 
 ## Current Support Boundary
 
 Security direction exists, but the module still needs:
 
 - validated infrastructure
+- enforcement controls and policy artifacts
 - alignment with [SECURITY.md](../SECURITY.md)
 - threat scenarios tied to implementation
-- a corrected and testable deployment path
+- deeper validation beyond the current draft baseline
 
 ## Recommended Use
 
 - read together with [SECURITY.md](../SECURITY.md) and [THREAT-MODEL.md](../THREAT-MODEL.md)
 - do not describe this module as complete
-

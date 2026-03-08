@@ -1,0 +1,41 @@
+name: Bicep Validation
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  validate-bicep:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Azure CLI available
+        uses: azure/cli@v2
+        with:
+          inlineScript: |
+            az bicep version
+
+      - name: Build module 09 Bicep
+        run: |
+          az bicep build --file 09-end-to-end-reference-implementation/infra/main.bicep
+
+      - name: Validate parameter files are valid JSON
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          files = [
+              Path("09-end-to-end-reference-implementation/infra/environments/dev.parameters.json"),
+              Path("09-end-to-end-reference-implementation/infra/environments/test.parameters.json"),
+              Path("09-end-to-end-reference-implementation/infra/environments/prod.parameters.json"),
+          ]
+          for path in files:
+              json.loads(path.read_text())
+              print(f"OK:{path}")
+          PY
+
