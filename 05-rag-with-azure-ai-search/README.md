@@ -1,11 +1,27 @@
-﻿# 05-rag-with-azure-ai-search
+# Module 05: RAG with Azure AI Search
 
-This module is **Complete** and runnable.
-It includes:
-- [x] Application Code (\pp/\)
-- [x] Infrastructure as Code (\infra/main.bicep\)
-- [x] Deployment automation (\deployment/deploy.sh\)
+## Status
 
-## To Run
-1. \cd deployment\
-2. \ash deploy.sh\
+`Draft`
+
+This module represents the retrieval-focused part of the curriculum. It has useful direction but is not yet validated end to end.
+
+## Current Contents
+
+- sample application code
+- a Bicep file
+- a deployment script
+
+## Current Support Boundary
+
+This module should not yet be treated as a validated RAG reference. It still needs:
+
+- setup and validation steps
+- retrieval quality checks
+- clearer support boundaries
+
+## Recommended Use
+
+- use for curriculum review
+- use module 09 for the current runnable implementation path
+

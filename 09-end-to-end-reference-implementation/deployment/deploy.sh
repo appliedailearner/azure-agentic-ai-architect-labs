@@ -20,12 +20,18 @@ REGION=${2:-eastus}
 PROJECT_NAME="agentic-ai"
 WORKDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 RESOURCE_GROUP="rg-${PROJECT_NAME}-${ENVIRONMENT}"
+PARAM_FILE="$WORKDIR/../infra/environments/${ENVIRONMENT}.parameters.json"
 
 echo -e "${YELLOW}Configuration:${NC}"
 echo "  Environment: $ENVIRONMENT"
 echo "  Region: $REGION"
 echo "  Project: $PROJECT_NAME"
 echo "  Target RG: $RESOURCE_GROUP"
+if [ -f "$PARAM_FILE" ]; then
+    echo "  Parameter file: $PARAM_FILE"
+else
+    echo "  Parameter file: none (falling back to inline defaults)"
+fi
 echo ""
 
 # Check prerequisites
@@ -69,10 +75,18 @@ VALIDATE_ONLY=${VALIDATE_ONLY:-false}
 
 if [ "$VALIDATE_ONLY" = true ]; then
     echo -e "${YELLOW}Running in validation mode (az deployment group validate)...${NC}"
-    az deployment group validate \
-      --resource-group "$RESOURCE_GROUP" \
-      --template-file "$WORKDIR/../infra/main.bicep" \
-      --parameters environment="$ENVIRONMENT" projectName="$PROJECT_NAME" principalId="$PRINCIPAL_ID"
+    if [ -f "$PARAM_FILE" ]; then
+        az deployment group validate \
+          --resource-group "$RESOURCE_GROUP" \
+          --template-file "$WORKDIR/../infra/main.bicep" \
+          --parameters @"$PARAM_FILE" \
+          --parameters principalId="$PRINCIPAL_ID" location="$REGION"
+    else
+        az deployment group validate \
+          --resource-group "$RESOURCE_GROUP" \
+          --template-file "$WORKDIR/../infra/main.bicep" \
+          --parameters environment="$ENVIRONMENT" projectName="$PROJECT_NAME" principalId="$PRINCIPAL_ID" location="$REGION"
+    fi
     echo -e "${GREEN}✓ Bicep validation completed without errors.${NC}"
     exit 0
 fi
@@ -80,12 +94,22 @@ fi
 # Actual deployment
 DEPLOYMENT_NAME="ai-agent-${ENVIRONMENT}-$(date +%s)"
 
-az deployment group create \
-  --name "$DEPLOYMENT_NAME" \
-  --resource-group "$RESOURCE_GROUP" \
-  --template-file "$WORKDIR/../infra/main.bicep" \
-  --parameters environment="$ENVIRONMENT" projectName="$PROJECT_NAME" principalId="$PRINCIPAL_ID" \
-  --query "properties.outputs"
+if [ -f "$PARAM_FILE" ]; then
+    az deployment group create \
+      --name "$DEPLOYMENT_NAME" \
+      --resource-group "$RESOURCE_GROUP" \
+      --template-file "$WORKDIR/../infra/main.bicep" \
+      --parameters @"$PARAM_FILE" \
+      --parameters principalId="$PRINCIPAL_ID" location="$REGION" \
+      --query "properties.outputs"
+else
+    az deployment group create \
+      --name "$DEPLOYMENT_NAME" \
+      --resource-group "$RESOURCE_GROUP" \
+      --template-file "$WORKDIR/../infra/main.bicep" \
+      --parameters environment="$ENVIRONMENT" projectName="$PROJECT_NAME" principalId="$PRINCIPAL_ID" location="$REGION" \
+      --query "properties.outputs"
+fi
 
 echo -e "${GREEN}✓ Infrastructure deployed successfully${NC}"
 echo ""

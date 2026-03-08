@@ -1,7 +1,7 @@
 @description('Environment name')
 @allowed([
   'dev'
-  'staging'
+  'test'
   'prod'
 ])
 param environment string = 'dev'
