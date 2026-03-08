@@ -1,0 +1,29 @@
+{
+  "properties": {
+    "displayName": "Require HTTPS only for web applications",
+    "policyType": "Custom",
+    "mode": "Indexed",
+    "description": "Ensures App Service resources enforce HTTPS-only traffic.",
+    "metadata": {
+      "category": "App Service"
+    },
+    "parameters": {},
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "equals": "Microsoft.Web/sites"
+          },
+          {
+            "field": "Microsoft.Web/sites/httpsOnly",
+            "notEquals": true
+          }
+        ]
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+  }
+}

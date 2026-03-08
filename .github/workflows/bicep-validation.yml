@@ -20,11 +20,14 @@ jobs:
           inlineScript: |
             az bicep version
 
-      - name: Build module 09 Bicep
+      - name: Build runnable baseline Bicep files
         run: |
           az bicep build --file 09-end-to-end-reference-implementation/infra/main.bicep
+          az bicep build --file 05-rag-with-azure-ai-search/infra/main.bicep
+          az bicep build --file 07-secure-reference-architecture/infra/main.bicep
+          az bicep build --file 08-observability-and-evaluation/infra/main.bicep
 
-      - name: Validate parameter files are valid JSON
+      - name: Validate parameter files and policy definitions are valid JSON
         run: |
           python - <<'PY'
           import json
@@ -33,9 +36,11 @@ jobs:
               Path("09-end-to-end-reference-implementation/infra/environments/dev.parameters.json"),
               Path("09-end-to-end-reference-implementation/infra/environments/test.parameters.json"),
               Path("09-end-to-end-reference-implementation/infra/environments/prod.parameters.json"),
+              Path("policy/azure-policy/definitions/https-only.json"),
+              Path("policy/azure-policy/definitions/minimum-tls.json"),
+              Path("policy/azure-policy/definitions/public-network-access-audit.json"),
           ]
           for path in files:
               json.loads(path.read_text())
               print(f"OK:{path}")
           PY
-

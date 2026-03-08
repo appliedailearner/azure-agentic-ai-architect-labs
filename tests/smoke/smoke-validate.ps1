@@ -20,6 +20,9 @@ $requiredFiles = @(
     "docs\rbac-matrix.md",
     "policy\README.md",
     "policy\azure-policy\README.md",
+    "policy\azure-policy\definitions\https-only.json",
+    "policy\azure-policy\definitions\minimum-tls.json",
+    "policy\azure-policy\definitions\public-network-access-audit.json",
     "tests\smoke\README.md"
 )
 
@@ -32,6 +35,7 @@ foreach ($file in $requiredFiles) {
 
 Push-Location $repoRoot
 try {
+    .\07-secure-reference-architecture\validate.ps1
     .\05-rag-with-azure-ai-search\validate.ps1
     .\08-observability-and-evaluation\validate.ps1
     .\09-end-to-end-reference-implementation\validate.ps1

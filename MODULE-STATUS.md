@@ -17,7 +17,7 @@ Status definitions:
 | `04-agent-framework-and-multi-agent` | Multi-agent and orchestration experiments | Draft | Read-only until standardized | Repo maintainer | 2026-03-08 |
 | `05-rag-with-azure-ai-search` | Retrieval and knowledge grounding patterns | Runnable Baseline | Secondary execution path after module 09 | Repo maintainer | 2026-03-08 |
 | `06-mcp-and-enterprise-tooling` | MCP and enterprise tool integration patterns | Draft | Read-only until standardized | Repo maintainer | 2026-03-08 |
-| `07-secure-reference-architecture` | Security-focused reference assets | Draft | Read-only until standardized | Repo maintainer | 2026-03-08 |
+| `07-secure-reference-architecture` | Security-focused reference assets | Runnable Baseline | Secondary execution path after modules 09, 05, and 08 | Repo maintainer | 2026-03-08 |
 | `08-observability-and-evaluation` | Evaluation and observability assets | Runnable Baseline | Secondary execution path after modules 09 and 05 | Repo maintainer | 2026-03-08 |
 | `09-end-to-end-reference-implementation` | Current golden path | Runnable Baseline | Primary execution path | Repo maintainer | 2026-03-08 |
 | `reference-architecture-diagram` | Duplicate diagram folder | Archive Candidate | Do not extend | Repo maintainer | 2026-03-08 |

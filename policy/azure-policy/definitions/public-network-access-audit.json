@@ -1,0 +1,45 @@
+{
+  "properties": {
+    "displayName": "Audit public network access for selected AI and search services",
+    "policyType": "Custom",
+    "mode": "Indexed",
+    "description": "Audits selected resources when public network access remains enabled.",
+    "metadata": {
+      "category": "Networking"
+    },
+    "parameters": {},
+    "policyRule": {
+      "if": {
+        "anyOf": [
+          {
+            "allOf": [
+              {
+                "field": "type",
+                "equals": "Microsoft.Search/searchServices"
+              },
+              {
+                "field": "Microsoft.Search/searchServices/publicNetworkAccess",
+                "equals": "enabled"
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "field": "type",
+                "equals": "Microsoft.CognitiveServices/accounts"
+              },
+              {
+                "field": "Microsoft.CognitiveServices/accounts/publicNetworkAccess",
+                "equals": "Enabled"
+              }
+            ]
+          }
+        ]
+      },
+      "then": {
+        "effect": "audit"
+      }
+    }
+  }
+}

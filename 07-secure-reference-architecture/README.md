@@ -2,27 +2,46 @@
 
 ## Status
 
-`Draft`
+`Runnable Baseline`
 
-This module should eventually hold the repo’s deeper security implementation patterns. Today it is still draft content and should not be treated as hardened proof.
+This module now provides a runnable local security baseline. It turns a set of control signals into a simple security assessment summary and pairs that with corrected draft Azure deployment assets.
 
-## Current Contents
+## What This Module Proves
 
-- sample application code
-- a corrected draft Bicep baseline
-- a corrected draft deployment script
+- a local security assessment flow exists
+- control failures can be summarized into a risk level
+- the module has tests
+- the module has a validation script
+- the module has corrected draft Bicep and deployment assets
 
-## Current Support Boundary
+## Support Boundary
 
-Security direction exists, but the module still needs:
+This module is a runnable baseline, not a hardened production security implementation. It does not yet provide:
 
-- validated infrastructure
-- enforcement controls and policy artifacts
-- alignment with [SECURITY.md](../SECURITY.md)
-- threat scenarios tied to implementation
-- deeper validation beyond the current draft baseline
+- policy enforcement at scale
+- private networking implementation
+- full Azure RBAC automation across every module
+- security operations integration
 
-## Recommended Use
+## Local Run Path
 
-- read together with [SECURITY.md](../SECURITY.md) and [THREAT-MODEL.md](../THREAT-MODEL.md)
-- do not describe this module as complete
+```powershell
+cd 07-secure-reference-architecture
+python -m pytest .\tests -q
+.\validate.ps1
+```
+
+## Expected Output
+
+- tests pass
+- `/health` reports the module is healthy
+- `/assess` returns enabled control counts, failed controls, and a risk level
+
+## Optional Azure Deployment Path
+
+```bash
+cd 07-secure-reference-architecture/deployment
+./deploy.sh dev eastus
+```
+
+This remains a draft Azure baseline and should be used for reference, not as a finished secure landing zone.

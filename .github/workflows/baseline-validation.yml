@@ -19,10 +19,13 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install module 09 dependencies
+      - name: Install runnable baseline dependencies
         run: |
           python -m pip install --upgrade pip
           pip install -r 09-end-to-end-reference-implementation/requirements.txt
+          pip install -r 05-rag-with-azure-ai-search/requirements.txt
+          pip install -r 07-secure-reference-architecture/requirements.txt
+          pip install -r 08-observability-and-evaluation/requirements.txt
 
       - name: Verify top-level docs exist
         run: |
@@ -31,12 +34,13 @@ jobs:
           test -f MODULE-STATUS.md
           test -f REFERENCE-ARCHITECTURE.md
 
-      - name: Run module 09 tests
-        env:
-          PYTHONPATH: 09-end-to-end-reference-implementation
+      - name: Run smoke validation
         run: |
-          pytest 09-end-to-end-reference-implementation/app/tests -q
+          pwsh ./tests/smoke/smoke-validate.ps1
 
-      - name: Lint module 09 with Ruff
+      - name: Lint runnable baselines with Ruff
         run: |
           ruff check 09-end-to-end-reference-implementation/app/agent.py
+          ruff check 05-rag-with-azure-ai-search/app/main.py
+          ruff check 07-secure-reference-architecture/app/main.py
+          ruff check 08-observability-and-evaluation/app/main.py
