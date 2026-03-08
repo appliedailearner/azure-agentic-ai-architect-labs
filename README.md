@@ -111,6 +111,7 @@ This repository should currently be treated as:
 - [FINOPS.md](./FINOPS.md)
 - [OBSERVABILITY.md](./OBSERVABILITY.md)
 - [CHANGELOG.md](./CHANGELOG.md)
+- [KNOWN-LIMITATIONS.md](./KNOWN-LIMITATIONS.md)
 - [RELEASE-CHECKLIST.md](./RELEASE-CHECKLIST.md)
 - [RELEASE-STRATEGY.md](./RELEASE-STRATEGY.md)
 - [MODULE-PROMOTION-CHECKLIST.md](./MODULE-PROMOTION-CHECKLIST.md)
@@ -125,3 +126,11 @@ This repository should currently be treated as:
 - standardize the remaining modules to the same setup/run/validate/teardown template
 - add Bicep environment overlays and a non-prod deployment workflow
 - add security and governance artifacts before restoring stronger readiness claims
+
+## Current Release Position
+
+The repository is now being prepared for a first prerelease:
+
+- target tag: `v0.1.0-alpha`
+- positioning: structured, validated baseline with explicit limitations
+- details: see [KNOWN-LIMITATIONS.md](./KNOWN-LIMITATIONS.md)
