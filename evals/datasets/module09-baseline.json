@@ -1,0 +1,18 @@
+[
+  {
+    "id": "module09-baseline-001",
+    "query": "What is the current runnable path in this repository?",
+    "expected_contains": [
+      "09-end-to-end-reference-implementation",
+      "golden path"
+    ]
+  },
+  {
+    "id": "module09-baseline-002",
+    "query": "Is the whole repository production-ready today?",
+    "expected_contains": [
+      "not yet",
+      "baseline"
+    ]
+  }
+]
