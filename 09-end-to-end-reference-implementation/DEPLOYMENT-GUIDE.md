@@ -63,6 +63,30 @@ If you want to exercise policy assignment wiring, populate `policyAssignments` i
 }
 ```
 
+For a real built-in example aligned to module 09, resolve the Azure built-in policy named `Azure Key Vault should disable public network access` and place it in `infra/environments/dev.parameters.json`.
+
+Resolve the current built-in definition ID with:
+
+```powershell
+.\09-end-to-end-reference-implementation\infra\environments\resolve-built-in-policy.ps1 `
+  -DisplayName "Azure Key Vault should disable public network access"
+```
+
+Then update `dev.parameters.json` to include:
+
+```json
+"policyAssignments": {
+  "value": [
+    {
+      "assignmentDisplayName": "Audit Azure Key Vault public network access",
+      "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/<resolved-built-in-guid>"
+    }
+  ]
+}
+```
+
+This built-in policy is listed in the Azure Key Vault policy reference on Microsoft Learn.
+
 ## Deploy
 
 ```bash

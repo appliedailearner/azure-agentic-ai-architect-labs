@@ -99,3 +99,18 @@ After the workflow passes:
 1. wire one real development policy assignment into `dev.parameters.json`
 2. verify the validation still passes
 3. use that result as part of `v0.2.0-alpha` release readiness
+
+Recommended first built-in:
+
+- `Azure Key Vault should disable public network access`
+
+Suggested command:
+
+```powershell
+.\09-end-to-end-reference-implementation\infra\environments\resolve-built-in-policy.ps1 `
+  -DisplayName "Azure Key Vault should disable public network access"
+```
+
+Then place the returned `policyDefinitionId` into:
+
+- `09-end-to-end-reference-implementation/infra/environments/dev.parameters.json`
