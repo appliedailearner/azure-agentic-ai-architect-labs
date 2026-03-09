@@ -1,5 +1,12 @@
 # Azure Agentic AI Architect Labs
 
+![Release](https://img.shields.io/badge/release-v0.1.0--alpha-blue)
+![Maturity](https://img.shields.io/badge/maturity-alpha-orange)
+![Primary%20Path](https://img.shields.io/badge/primary%20path-module%2009-success)
+![Runnable%20Baselines](https://img.shields.io/badge/runnable%20baselines-4-brightgreen)
+![Infrastructure](https://img.shields.io/badge/infrastructure-Bicep-4C7CF0)
+![Validation](https://img.shields.io/badge/repo%20smoke-passing-success)
+
 This repository is being evolved into a credible Azure-first learning and reference repo for agentic AI. As of March 8, 2026, the repo is in an **alpha baseline state**:
 
 - the folder structure is documented explicitly
