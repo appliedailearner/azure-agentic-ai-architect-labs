@@ -153,6 +153,7 @@ This repository should currently be treated as:
 - [VALIDATION-MATRIX.md](./VALIDATION-MATRIX.md)
 - [MODULE-PROMOTION-CHECKLIST.md](./MODULE-PROMOTION-CHECKLIST.md)
 - [docs/releases/v0.1.0-alpha.md](./docs/releases/v0.1.0-alpha.md)
+- [docs/github-actions-azure-setup.md](./docs/github-actions-azure-setup.md)
 - [docs/rbac-matrix.md](./docs/rbac-matrix.md)
 - [09-end-to-end-reference-implementation/README.md](./09-end-to-end-reference-implementation/README.md)
 - [docs/repo-map.md](./docs/repo-map.md)
