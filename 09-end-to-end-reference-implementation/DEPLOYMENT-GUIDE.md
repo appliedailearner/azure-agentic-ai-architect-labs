@@ -83,6 +83,16 @@ The deployment currently emits:
 - Key Vault URI
 - managed identity client ID
 
+## Post-Deploy Smoke Validation
+
+After a successful deployment, run:
+
+```powershell
+.\post-deploy-smoke.ps1 -Environment dev
+```
+
+This script checks for the expected non-prod resource set and verifies that Key Vault returns a vault URI.
+
 ## What Still Needs Hardening
 
 - environment promotion workflow
@@ -90,4 +100,3 @@ The deployment currently emits:
 - RBAC matrix and policy-as-code
 - deployment smoke tests after Azure provisioning
 - richer operations and monitoring artifacts
-

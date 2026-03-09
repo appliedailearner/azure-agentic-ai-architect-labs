@@ -10,6 +10,7 @@ This module provides:
 - supporting tests
 - a Bicep deployment baseline
 - a local validation script
+- a post-deploy smoke validation script for non-prod environments
 
 It does **not** yet prove full enterprise readiness. It is the week-one implementation baseline that the rest of the repo will be hardened around.
 
@@ -55,6 +56,12 @@ pytest .\app\tests -q
 .\validate.ps1
 ```
 
+### 4. Optional: validate a non-prod deployment after Azure provisioning
+
+```powershell
+.\deployment\post-deploy-smoke.ps1 -Environment dev
+```
+
 ## Expected Outcome
 
 The current local baseline is considered healthy when:
@@ -62,6 +69,7 @@ The current local baseline is considered healthy when:
 - tests pass locally
 - the validation script confirms required files exist
 - the support boundary is understood before any Azure deployment attempt
+- post-deploy smoke validation can verify the expected non-prod resource set when Azure resources exist
 
 ## Deployment Note
 
