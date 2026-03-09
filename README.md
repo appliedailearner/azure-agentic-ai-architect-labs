@@ -1,11 +1,11 @@
 # Azure Agentic AI Architect Labs
 
-This repository is being reset into a credible Azure-first learning and reference repo for agentic AI. As of March 8, 2026, the repo is in a **week-one stabilization state**:
+This repository is being evolved into a credible Azure-first learning and reference repo for agentic AI. As of March 8, 2026, the repo is in an **alpha baseline state**:
 
-- the folder structure is now documented explicitly
+- the folder structure is documented explicitly
 - module maturity is tracked in [MODULE-STATUS.md](./MODULE-STATUS.md)
-- the recommended starting point is the module 09 golden path
-- broad production-ready claims have been removed until the evidence exists
+- multiple runnable baselines now exist
+- broad production-ready claims remain intentionally constrained
 
 ## What This Repo Is
 
@@ -20,9 +20,9 @@ This repo is intended to become:
 The repo is **not yet a full enterprise-grade reference implementation**. It currently has:
 
 - one prioritized golden path in [09-end-to-end-reference-implementation](./09-end-to-end-reference-implementation/README.md)
-- draft modules for the broader curriculum
-- partial Bicep assets and sample app code
-- baseline GitHub hygiene and validation workflows
+- additional runnable baselines in modules 05, 07, and 08
+- draft modules for the remaining curriculum
+- Bicep, smoke validation, governance, policy, and release artifacts
 
 See [MODULE-STATUS.md](./MODULE-STATUS.md) for the current truth.
 
@@ -70,17 +70,38 @@ The intended learning sequence is:
 8. Observability and evaluation
 9. End-to-end reference implementation
 
-Only module 09 is currently positioned as the recommended execution path.
+Module 09 remains the recommended first execution path.
+
+## Current Alpha Scope
+
+This repository is currently positioned as `v0.1.0-alpha`.
+
+That means:
+
+- the repo has multiple runnable baselines
+- release, governance, and smoke-validation artifacts exist
+- support boundaries are explicit
+- the repo is still not production-ready
+
+## Runnable Modules
+
+| Module | Status | What It Proves |
+| --- | --- | --- |
+| `09-end-to-end-reference-implementation` | Runnable Baseline | primary golden path, agent baseline, Bicep overlays, repo validation |
+| `05-rag-with-azure-ai-search` | Runnable Baseline | local RAG-style retrieval and grounded response flow |
+| `07-secure-reference-architecture` | Runnable Baseline | local security control assessment baseline |
+| `08-observability-and-evaluation` | Runnable Baseline | local evaluation and observability summary baseline |
 
 ## What Works Today
 
-Current week-one baseline:
+Current alpha baseline:
 
 - a truthful top-level README and quick start
 - a documented module maturity view
-- a single reference architecture for the current golden path
-- a PowerShell validation script for module 09
-- basic GitHub workflow, CODEOWNERS, issue templates, and PR template
+- a reference architecture and governance/security/operations docs
+- runnable baselines for modules 09, 05, 07, and 08
+- smoke validation and GitHub workflow coverage
+- policy examples and an RBAC example
 
 ## What Is Still In Progress
 
@@ -96,6 +117,14 @@ This repository should currently be treated as:
 - safe for learning and repo modernization work
 - useful for architecture discussion and pattern exploration
 - **not yet sufficient as a production deployment standard without further hardening**
+
+## Not Yet Production Ready Because
+
+- only some modules are runnable baselines
+- policy enforcement is still partial
+- Azure deployment validation is still maturing
+- private networking and deeper control enforcement are not complete
+- observability and evaluation are baseline implementations rather than production-grade systems
 
 ## Key Documents
 
@@ -114,23 +143,18 @@ This repository should currently be treated as:
 - [KNOWN-LIMITATIONS.md](./KNOWN-LIMITATIONS.md)
 - [RELEASE-CHECKLIST.md](./RELEASE-CHECKLIST.md)
 - [RELEASE-STRATEGY.md](./RELEASE-STRATEGY.md)
+- [VALIDATION-MATRIX.md](./VALIDATION-MATRIX.md)
 - [MODULE-PROMOTION-CHECKLIST.md](./MODULE-PROMOTION-CHECKLIST.md)
+- [docs/releases/v0.1.0-alpha.md](./docs/releases/v0.1.0-alpha.md)
 - [docs/rbac-matrix.md](./docs/rbac-matrix.md)
 - [09-end-to-end-reference-implementation/README.md](./09-end-to-end-reference-implementation/README.md)
 - [docs/repo-map.md](./docs/repo-map.md)
 - [docs/terminology.md](./docs/terminology.md)
 
-## Immediate Next Steps
-
-- make module 09 the fully validated golden path
-- standardize the remaining modules to the same setup/run/validate/teardown template
-- add Bicep environment overlays and a non-prod deployment workflow
-- add security and governance artifacts before restoring stronger readiness claims
-
 ## Current Release Position
 
-The repository is now being prepared for a first prerelease:
+The repository now has its first prerelease tag:
 
-- target tag: `v0.1.0-alpha`
+- current tag: `v0.1.0-alpha`
 - positioning: structured, validated baseline with explicit limitations
 - details: see [KNOWN-LIMITATIONS.md](./KNOWN-LIMITATIONS.md)
