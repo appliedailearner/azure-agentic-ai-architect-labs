@@ -1,0 +1,32 @@
+name: Azure Deployment Validation
+
+on:
+  workflow_dispatch:
+
+jobs:
+  validate-azure-deployment:
+    if: ${{ secrets.AZURE_CLIENT_ID != '' && secrets.AZURE_TENANT_ID != '' && secrets.AZURE_SUBSCRIPTION_ID != '' && secrets.AZURE_PRINCIPAL_ID != '' }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Azure login
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Create validation resource group
+        run: |
+          az group create --name rg-agentic-ai-ci-dev --location eastus
+
+      - name: Validate module 09 deployment
+        run: |
+          az deployment group validate \
+            --resource-group rg-agentic-ai-ci-dev \
+            --template-file 09-end-to-end-reference-implementation/infra/main.bicep \
+            --parameters @09-end-to-end-reference-implementation/infra/environments/dev.parameters.json \
+            --parameters principalId=${{ secrets.AZURE_PRINCIPAL_ID }} location=eastus

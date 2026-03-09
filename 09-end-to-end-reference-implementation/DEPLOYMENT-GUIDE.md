@@ -32,6 +32,7 @@ These files control environment-specific values such as:
 - `environment`
 - `searchSku`
 - `cosmosdbThroughput`
+- `policyAssignments`
 
 ## Validate Locally First
 
@@ -52,6 +53,15 @@ VALIDATE_ONLY=true ./deploy.sh test eastus
 ```
 
 The script uses the matching parameter file when it exists.
+
+If you want to exercise policy assignment wiring, populate `policyAssignments` in the chosen parameter file with objects shaped like:
+
+```json
+{
+  "assignmentDisplayName": "Require HTTPS Only",
+  "policyDefinitionId": "/subscriptions/<subscription-id>/providers/Microsoft.Authorization/policyDefinitions/<definition-guid>"
+}
+```
 
 ## Deploy
 

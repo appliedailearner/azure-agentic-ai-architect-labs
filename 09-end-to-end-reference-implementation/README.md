@@ -11,6 +11,7 @@ This module provides:
 - a Bicep deployment baseline
 - a local validation script
 - a post-deploy smoke validation script for non-prod environments
+- optional policy-assignment wiring in the module 09 Bicep path
 
 It does **not** yet prove full enterprise readiness. It is the week-one implementation baseline that the rest of the repo will be hardened around.
 

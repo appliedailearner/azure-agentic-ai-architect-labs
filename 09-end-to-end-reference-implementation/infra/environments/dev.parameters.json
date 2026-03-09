@@ -13,6 +13,9 @@
     },
     "cosmosdbThroughput": {
       "value": 400
+    },
+    "policyAssignments": {
+      "value": []
     }
   }
 }

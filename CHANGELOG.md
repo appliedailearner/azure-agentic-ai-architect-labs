@@ -55,21 +55,10 @@ All notable changes to this repository should be tracked here.
 - added `KNOWN-LIMITATIONS.md`
 - aligned release-facing docs for `v0.1.0-alpha`
 
-### Week 5
+### Post-Alpha Hardening
 
-- promoted module 05 to `Runnable Baseline`
-- added module 05 tests, validation script, and corrected draft Azure assets
-- promoted module 08 to `Runnable Baseline`
-- added module 08 tests, validation script, and corrected draft Azure assets
-
-### Week 6
-
-- added RBAC matrix
-- added policy scaffold
-- added smoke validation script
-- added release strategy
-
-### Alpha Preparation
-
-- added `KNOWN-LIMITATIONS.md`
-- aligned README and changelog for `v0.1.0-alpha`
+- promoted module 07 to `Runnable Baseline`
+- added sample Azure Policy definitions
+- added RBAC and policy assignment Bicep examples
+- added release-readiness and Azure deployment validation workflows
+- added module 09 post-deploy smoke validation guidance

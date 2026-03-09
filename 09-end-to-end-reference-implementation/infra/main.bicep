@@ -30,6 +30,9 @@ param cosmosdbThroughput int = 400
 @description('Principal ID of the user executing the deployment to grant KeyVault access')
 param principalId string
 
+@description('Optional policy assignments to create at the resource group scope')
+param policyAssignments array = []
+
 // Local variables
 var resourceSuffix = '${projectName}-${environment}'
 var commonTags = {
@@ -309,5 +312,14 @@ resource kvRole 'Microsoft.Authorization/roleAssignments@2022-04-01' = {
     principalType: 'ServicePrincipal'
   }
 }
+
+module policyAssignmentsModule 'modules/policy-assignment-example.bicep' = [for assignment in policyAssignments: {
+  name: 'policy-assignment-${uniqueString(resourceGroup().id, assignment.assignmentDisplayName, assignment.policyDefinitionId)}'
+  params: {
+    targetResourceGroupName: resourceGroup().name
+    policyDefinitionId: assignment.policyDefinitionId
+    assignmentDisplayName: assignment.assignmentDisplayName
+  }
+}]
 
 output agentManagedIdentityClientId string = agentIdentity.properties.clientId
